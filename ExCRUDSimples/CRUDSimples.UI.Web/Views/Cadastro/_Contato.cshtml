@@ -1,0 +1,52 @@
+﻿<!-- Modal -->
+<div class="modal fade bs-modal-lg" id="contatosModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="contatoModalLabel">Lista de Contatos</h4>
+            </div>
+            <div class="modal-body text-center">
+                <input type="hidden" />
+                <div class="nome-empresa">
+                    <p>Nome da empresa: <span></span></p>
+                </div>
+                <div class="mnu-btn text-left hidden">
+                    <button type="button" class="btn btn-default" data-acao="add" title="Adicionar contato nessa empresa">
+                        <i class="glyphicon glyphicon-plus"></i>
+                    </button>
+                </div>
+                <div class="dados-contato row hidden">
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" id="nomeContato" placeholder="Nome">
+                    </div>
+                    <div class="col-xs-2">
+                        <input type="tel" class="form-control" id="telefoneContato" placeholder="Telefone">
+                    </div>
+                    <div class="col-xs-2">
+                        <input type="tel" class="form-control" id="celularContato" placeholder="Celular">
+                    </div>
+                    <div class="col-xs-3">
+                        <input type="email" class="form-control" id="emailContato" placeholder="E-mail">
+                    </div>
+                    <div class="col-xs-1">
+                        <a href="#" class="btn btn-success" id="salvarContato"><i class=" glyphicon glyphicon-ok"></i></a>
+                    </div>
+                </div>
+                <div class="hidden del-contato">
+                    <p>Tem certeza que deseja excluir o contato ''<span></span>'' ?</p>
+                    <p>
+                        <a class="btn btn-sm btn-danger" href="#" data-idcontato=""><i></i><span></span></a>
+                        &nbsp;|&nbsp;
+                        <a class="vorta" href="#">&laquo; Voltar</a>
+                    </p>
+                </div>
+                <div class="relacao text-left"></div>
+            </div>
+            <div id="msgErroContato" class="alert alert-danger hide text-center"><small><span></span></small></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

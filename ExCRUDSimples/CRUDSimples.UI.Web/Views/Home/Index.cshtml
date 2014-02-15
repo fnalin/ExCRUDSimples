@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>CRUD Simples</h1>
+    <p class="lead">App criada de acordo com um cenário passado e afim de testes. Utilizei aqui Asp.Net MVC, Entity Framework, HTML, CSS e JavaScript.</p>
+    <p><a href="#" class="btn btn-primary btn-large">&laquo; Voltar p/ tela do projeto</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Acesse o cadastro</h2>
+        <p>
+            Tela principal do sistema, onde o CRUD acontece.
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Cadastro")/#Empresa">Acesse aqui &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Relatórios</h2>
+        <p>Obtenha dados de maneira simples</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index","Cadastro")/#item4">Acesse aqui &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>About Me</h2>
+        <p>Informações sobre o desenvolvedor</p>
+        <p><a class="btn btn-default" href="http://fabianonalin.net.br/About" target="_blank">Leia mais aqui &raquo;</a></p>
+    </div>
+</div>

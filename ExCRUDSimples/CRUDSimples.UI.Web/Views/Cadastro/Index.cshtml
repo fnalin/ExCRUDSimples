@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Dados";
+    var update = (bool)ViewBag.update;
+    var bloco = (string)ViewBag.bloco;
+}
+<br />
+<div class="row">
+    <input id="update" type="hidden" value="@update" />
+    <input id="bloco" type="hidden" value="@bloco" />
+    <div class="col-md-2 col-xs-4 well">
+        <ul class="nav nav-pills nav-stacked mnu-lateral">
+            <li class="nav-header disabled"><a>Cadastro</a></li>
+            <li data-tipo="Empresa" data-titulo="Cadastro de Empresas"><a href="#Empresa">Empresas</a></li>
+            <li><a href="#">Item2</a></li>
+            <li><a href="#">Item 3</a></li>
+            <li class="nav-header disabled"><a>Relatórios</a></li>
+            <li><a href="#">Item 4</a></li>
+            <li><a href="#">Item 5</a></li>
+        </ul>
+    </div>
+    
+    <div class="col-md-10 col-xs-12" id="conteudo">
+        <div id="cabecalho-dados" class="row hide">
+            <div class="col-md-7 col-xs-8">
+                <h2>Empresa</h2>
+            </div>
+            <div class="col-md-5 col-sm-3 text-right">
+                <br />
+                <a href="@Url.Action("Add")" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i></a>
+                <a id="update" href="#" class="btn btn-success"><i class="glyphicon glyphicon-refresh"></i></a>
+            </div>
+        </div>
+        <br />
+        <div id="partial"></div>
+        <div id="menuPaginacao" class="text-center">@*Paginação vai aqui*@</div>
+    </div>
+</div>
+@Html.Partial("_Delete")
+@Html.Partial("_Contato")
+@section scripts{
+    <script src="~/Scripts/empresa.js"></script>
+}

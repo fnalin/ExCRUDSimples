@@ -1,0 +1,39 @@
+﻿@model IQueryable<CRUDSimples.UI.Web.Models.Empresa>
+
+<div class="row">
+    <table id="tabelaDados" class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Nome Fantasia</th>
+                <th>CNPJ</th>
+                <th>WebSite</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model)
+        {
+                <tr>
+                    <td>@item.ID</td>
+                    <td>@item.Nome</td>
+                    <td>@item.NomeFantasia</td>
+                    <td>@item.CNPJ</td>
+                    <td><a href="@item.WebSite" target="_blank">@item.WebSite</a></td>
+                    <td class="mnutable">
+                        <div class="btn-group">
+                            <a href="@Url.Action("Edit", "Cadastro", new { id = @item.ID })" title="Editar @item.Nome" class="btn btn-default edit-btn"><i class="glyphicon glyphicon-folder-open"></i></a>
+                            <button class="btn btn-default contatos-btn" data-id="@item.ID" data-nome="@item.Nome" title="Contatos do(a) @item.Nome">
+                                <i class="glyphicon glyphicon-user"></i>
+                            </button>
+                            <button class="btn btn-default delete-btn" data-nome="@item.Nome" data-id="@item.ID" title="Excluir @item.Nome">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+        }
+        </tbody>
+    </table>
+</div>

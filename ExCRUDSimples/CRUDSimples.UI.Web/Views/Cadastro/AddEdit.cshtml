@@ -1,0 +1,63 @@
+﻿@model CRUDSimples.UI.Web.Models.ViewModel.EmpresaVM
+
+@{
+    ViewBag.Title = "Add Empresa";
+}
+
+<div class="page-header">
+    <h2>Empresa <small>- Add</small></h2>
+</div>
+@using (Html.BeginForm("AddEdit", "Cadastro", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="row">
+        <div class="form-horizontal col-sm-6">
+            <div class="form-group">
+                <label for="inputID" class="col-sm-3 control-label">ID</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputID" disabled value="@(Model.ID == 0 ? "Auto" : Model.ID.ToString("0000"))" />
+                    @Html.HiddenFor(m => m.ID)
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Nome" class="col-sm-3 control-label">Razão Social</label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(m => m.RazaoSocial, new { @class = "form-control", @autofocus = "autofocus" })
+                    @Html.ValidationMessageFor(m => m.RazaoSocial)
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="NomeFantasia" class="col-sm-3 control-label">Nome Fantasia</label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(m => m.NomeFantasia, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.NomeFantasia)
+                </div>
+            </div>
+        </div>
+        <div class="form-horizontal col-sm-6">
+            <div class="form-group">
+                <label for="CNPJ" class="col-sm-3 control-label">CNPJ / CGC</label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(m => m.CNPJ, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.CNPJ)
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="WebSite" class="col-sm-3 control-label">WebSite</label>
+                <div class="col-sm-9">
+                    <input name="WebSite" type="url" value="@Model.WebSite" class="form-control" />
+                    @Html.ValidationMessageFor(m => m.WebSite)
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row text-center">
+        <input type="submit" value="Salvar Registro" class="btn btn-primary" />
+        <a class="btn btn-danger" href="@Url.Action("Index","Cadastro")/#Empresa">Cancelar</a>
+    </div>
+}
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
