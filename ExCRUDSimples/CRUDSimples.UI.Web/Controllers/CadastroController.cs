@@ -21,10 +21,14 @@ namespace CRUDSimples.UI.Web.Controllers
             return View();
         }
 
-        const int qtdeItensNoBloco = 5;//Qtde exibida por vez na paginação
+        //Qtde exibida por vez na paginação
+        // O ideal é mantermos num xml ou no próprio banco numa sessão de "Preferencias"
+        const int qtdeItensNoBloco = 5;
 
         public PartialViewResult GetEmpresa(int bloco)
         {
+            //minha base tá no Azure, e mesmo sendo nos EUA tá muito rápido :)
+            //se quiser  simular o comportamento do retorno do json em ambiente não tão rápido:
             //System.Threading.Thread.Sleep(2000);
             if (bloco == 0) //se p bloco for 0 então ir para o último (esse valor vem da interface, qdo o cara cria um novo)
             {
@@ -53,16 +57,6 @@ namespace CRUDSimples.UI.Web.Controllers
             return PartialView("_MenuPaginacao");
         }
 
-        public PartialViewResult GetContatos(int id)
-        {
-            //System.Threading.Thread.Sleep(2000);
-            //throw new NotImplementedException("não!");
-
-            var contatos = _db.Empresas.Find(id).Contatos;
-            var view = "_DadosContatoView";
-            return PartialView(view, contatos);
-        }
-
         public ActionResult Add()
         {
             return View("AddEdit", new EmpresaVM());
@@ -82,7 +76,15 @@ namespace CRUDSimples.UI.Web.Controllers
                 RazaoSocial = find.Nome,
                 NomeFantasia = find.NomeFantasia,
                 CNPJ = find.CNPJ,
-                WebSite = find.WebSite
+                WebSite = find.WebSite,
+                Contatos = find.Contatos.Select(d => new ContatoVM
+                {
+                    ID = d.ID,
+                    Nome = d.Nome,
+                    Telefone = d.Telefone,
+                    Celular = d.Celular,
+                    Email = d.Email
+                }).ToList()
             };
 
             return View("AddEdit", empresa);
@@ -101,8 +103,24 @@ namespace CRUDSimples.UI.Web.Controllers
                         Nome = empresa.RazaoSocial,
                         NomeFantasia = empresa.NomeFantasia,
                         CNPJ = empresa.CNPJ,
-                        WebSite = empresa.WebSite
+                        WebSite = empresa.WebSite,
                     });
+
+                    /*faltou implementar o add e edit do post do obj contato
+                    
+                     *  ficaria mais ou menos assim:
+                     
+                     */
+
+                    //empresa.Contatos.ToList().ForEach(d =>
+                    //    _db.Contatos.Add(new Contato
+                    //    {
+                    //        Nome = d.Nome,
+                    //        Telefone = d.Telefone,
+                    //        Celular = d.Celular,
+                    //        Email = d.Email
+                    //    })
+                    //);
                 }
                 else
                 {
@@ -138,6 +156,9 @@ namespace CRUDSimples.UI.Web.Controllers
                 if (empresa == null)
                     throw new Exception("Fonte não localizado!");
 
+                //empresa.CodigoFonteTagRels.ToList()
+                //    .ForEach(d => db.CodigoFonteTagRels.Remove(db.CodigoFonteTagRels.Find(d.ID)));
+
                 _db.Empresas.Remove(empresa);
 
                 _db.SaveChanges();
@@ -162,10 +183,72 @@ namespace CRUDSimples.UI.Web.Controllers
                 }
             }
 
+            //minha base tá no Azure, e mesmo sendo nos EUA tá muito rápido :)
+            //se quiser  simular o comportamento do retorno do json em ambiente não tão rápido:
             //System.Threading.Thread.Sleep(3000);
 
             return Json(mensagemErro, JsonRequestBehavior.DenyGet);
 
+        }
+
+
+        #region Métodos ref. Contato(s)
+
+        public JsonResult GetContato(int id)
+        {
+
+            string mensagemErro = string.Empty;
+            Contato contato = null;
+
+            try
+            {
+                contato = _db.Contatos.Find(id);
+
+                if (contato == null)
+                {
+                    throw new Exception("Contato não localizado!");
+                    //mensagemErro = "Contato não localizado!";
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                mensagemErro = ex.Message;
+
+            }
+
+            return Json(
+                new
+                {
+                    erro = mensagemErro,
+                    dados = contato != null ? new
+                    {
+                        id = contato.ID,
+                        nome = contato.Nome,
+                        telefone = contato.Telefone,
+                        celular = contato.Celular,
+                        email = contato.Email
+                    } : null,
+                },
+                JsonRequestBehavior.AllowGet);
+        }
+
+        public PartialViewResult GetContatos(int id)
+        {
+            //minha base tá no Azure, e mesmo sendo nos EUA tá muito rápido :)
+            //se quiser  simular o comportamento do retorno do json em ambiente não tão rápido:
+            //System.Threading.Thread.Sleep(2000);
+            var contatos = _db.Empresas.Find(id).Contatos.Select(d => new ContatoVM()
+            {
+                ID = d.ID,
+                Nome = d.Nome,
+                Telefone = d.Telefone,
+                Celular = d.Celular,
+                Email = d.Email
+            });
+            var view = "_DadosContatoView";
+            return PartialView(view, contatos);
         }
 
         [HttpPost]
@@ -178,7 +261,6 @@ namespace CRUDSimples.UI.Web.Controllers
                 _db.Contatos.Add(dados);
                 _db.SaveChanges();
             }
-            // ** TO DO Tratar para receber no json **
             //catch (DbEntityValidationException e)
             //{
             //    foreach (var eve in e.EntityValidationErrors)
@@ -203,7 +285,6 @@ namespace CRUDSimples.UI.Web.Controllers
                 mensagemErro
                 , JsonRequestBehavior.DenyGet);
         }
-
 
         [HttpPost]
         public JsonResult DeleteContato(int id)
@@ -230,12 +311,16 @@ namespace CRUDSimples.UI.Web.Controllers
                 mensagemErro
                 , JsonRequestBehavior.DenyGet);
         }
+        #endregion
 
+
+        #region Dispose
         protected override void Dispose(bool disposing)
         {
             _db.Dispose();
             base.Dispose(disposing);
         }
+        #endregion
 
     }
 }

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<CRUDSimples.UI.Web.Models.ViewModel.ContatoVM>
+@{
+    var i = 0;
+}
+@*<div class="row">
+    <div class="col-sm-6">
+        <h4>Contatos <span class="glyphicon glyphicon-arrow-down"></span></h4>
+    </div>
+    <div class="col-sm-1 col-sm-offset-5 text-right"><a id="btn-add-contato" href="#" title="Add Contato" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></a> </div>
+    </div>
+<br />*@
+@foreach (var item in @Model)
+{
+
+    <div class="panel panel-default" id="contato-@item.ID">
+        <button type="button" class="close close-contato">×</button>
+        <button type="button" class="close edit-contato" data-id="@item.ID"><span class="glyphicon glyphicon-pencil"></span></button>
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                #@(i + 1) @Html.HiddenFor(m => item.ID)
+                <input type="hidden" value="@item.ID" name="Contatos[@i].ID" />
+            </h3>
+        </div>
+        <div class="panel-body row" style="padding:20px 50px;">
+            <div class="col-sm-6">
+                <span>Nome: @item.Nome</span>
+                <input type="hidden" value="@item.Nome" name="Contatos[@i].Nome" />
+            </div>
+            <div class="col-sm-4 col-sm-offset-2">
+                <span>Telefone: @item.Telefone</span>
+            </div>
+
+            <div class="col-sm-6">
+                <span>E-mail: @item.Email</span>
+            </div>
+            <div class="col-sm-4 col-sm-offset-2">
+                <span>Celular: @item.Celular</span>
+            </div>
+        </div>
+    </div>
+    i++;
+}

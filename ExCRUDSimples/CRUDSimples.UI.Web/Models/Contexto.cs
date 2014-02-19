@@ -10,9 +10,10 @@ namespace CRUDSimples.UI.Web.Models
             Database.SetInitializer<Contexto>(null);
         }
 
-        //Atenção --
+        //Atenção -
         //Estou usando o SQLExpress em minha máquina via Windows Autentication
         //Colocar aqui a Connection String ou referenciá-la com o nome da Conexão no Web.Config. Ex: LocalSQLExp
+        //qualquer coisa me avisa q te dou um help
         public Contexto()
             : base(@"Data Source=.\sqlexpress;Initial Catalog=CadEmpresaContatos;Integrated Security=True;MultipleActiveResultSets=True")
         //: base("Name=LocalSQLExp")

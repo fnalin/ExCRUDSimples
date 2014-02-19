@@ -1,0 +1,11 @@
+INSTRUÇÕES:
+	- Execute o script para gerar a base. Se quiser altere os nomes nos objetos, no entanto, não esquece de revê-los no mapeamento do EF.
+	- Se atente a string de conexão disponível na classe que herda o dbcontext
+
+
+	** ATENÇÃO **
+		Não tenho intuito de monetizar essa app, pelo menos em $ (cash), no entanto, se for expôr esse código, me consulte.
+
+Abs
+Fabiano Nalin
+http://fabianonalin.net.br

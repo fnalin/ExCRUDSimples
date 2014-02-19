@@ -5,12 +5,22 @@ VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUDSimples.UI.Web", "CRUDSimples.UI.Web\CRUDSimples.UI.Web.csproj", "{5E824544-D477-4CF7-B2E4-52B224B07648}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C7B460EB-87BC-4410-993B-87A6670B802F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{96BB4004-E1E7-4B3A-A2CD-118DF1239C33}"
 	ProjectSection(SolutionItems) = preProject
+		Outros Arquivos\_leiame.txt = Outros Arquivos\_leiame.txt
 		Arquivo_DB\GerarBase.sql = Arquivo_DB\GerarBase.sql
 	EndProjectSection
 EndProject
 Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://fnalin.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = CRUDSimples.UI.Web\\CRUDSimples.UI.Web.csproj
+		SccProjectName1 = CRUDSimples.UI.Web
+		SccLocalPath1 = CRUDSimples.UI.Web
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

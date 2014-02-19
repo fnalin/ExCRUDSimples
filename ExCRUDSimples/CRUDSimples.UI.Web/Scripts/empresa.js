@@ -1,9 +1,18 @@
 ﻿/*
     by FabianoNalin.net.br
+
+    :(
+    XGH na veiaaa...
+        -- Se contratado prometo refatorar o código antes de disponibilizá-lo aos clientes! (:
 */
 
 //Tenta carregar  o ajax se reconhecer o hash da página
 $().ready(function () {
+    /*
+        :(
+        Frescura... só para usar o # na URL
+        Se for contratado prometo q estudo mais SPA e uso os templates do VS (:
+    */
     $("li#cadastro").addClass("active");
 
     var update = Boolean($("#update").val());
@@ -73,6 +82,7 @@ var CarregaDados = function (tipo, titulo, bloco) {
             cache: false,
             async: true,
             beforeSend: function () {
+                //$("#updateButton span").text(" Atualizando");
                 $("#cabecalho-dados h2").text(titulo);
                 $("#cabecalho-dados").removeClass("hide");
                 $("#update i").addClass("icon-refresh-animate");
@@ -253,7 +263,6 @@ $(".del-contato p .btn-danger").on("click", function (e) {
     e.preventDefault();
     ExcluirContato($(this).data("idcontato"));
 });
-
 $(".del-contato p .vorta").on("click", function (e) {
     e.preventDefault();
     $(".del-contato").addClass("hidden");
@@ -323,7 +332,9 @@ $(".mnu-btn button").on('click', function (e) {
 $("#salvarContato").on("click", function (e) {
     e.preventDefault();
     var nome = $("#nomeContato");
+    // ... por favor pule essa parte, vá direto para o ajax
     if (nome.val().trim().length == 0) {
+        //:(
         nome.focus().parent().addClass("has-error");
     } else {
         var empresa = $("#contatosModal .modal-body input[type=hidden]").val();
@@ -353,6 +364,7 @@ $("#salvarContato").on("click", function (e) {
                     CarregaContatos();
                     $('.dados-contato input').val('');
                 } else {
+                    //$("#msgErroContato span").text(data);
                     $("#msgErroContato span").text("Erro no cadastro. Verifique a validação dos campos!");
                     nome.focus();
                     $("#msgErroContato").hide().removeClass('hide').fadeIn(500);

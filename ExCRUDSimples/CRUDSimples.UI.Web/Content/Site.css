@@ -66,15 +66,15 @@ div.del-contato {
 }
 
     div.del-contato p {
-        font-size:0.9em;
-        padding-top:5px;
+        font-size: 0.9em;
+        padding-top: 5px;
     }
 
-    div.nome-empresa{
-        font-weight:bold;
-        font-size:1.1em;
-        color:#808080;
-    }
+div.nome-empresa {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #808080;
+}
 
 .table tr:hover .btn-group {
     visibility: visible;
@@ -95,6 +95,23 @@ div.del-contato {
 #contatosModal .modal-body div.dados-contato {
     padding: 50px 0 5px 0;
 }
+
+.close-contato {
+    margin: 5px 10px 0 0;
+}
+
+.edit-contato {
+    margin: 11px 10px 0 0;
+    font-size: 0.8em;
+}
+
+.view-contatos{
+    font-size: 0.7em;
+}
+
+    .view-contatos:hover {
+        cursor:pointer;
+    }
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
@@ -128,6 +145,7 @@ input[type="checkbox"].input-validation-error {
     display: none;
 }
 
+/* frescura p/ fazer o ícone do bootstrap girar!*/
 .icon-refresh-animate {
     visibility: visible !important;
     -moz-animation-name: rotateThis;

@@ -1,0 +1,55 @@
+﻿<!-- Modal -->
+<div class="modal fade bs-modal-lg" id="contatosModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="contatoModalLabel"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <input type="hidden" id="contato-id" value="" />
+                    <div class="form-horizontal col-sm-6">
+                        <div class="form-group">
+                            <label for="view-ID" class="col-sm-3 control-label">ID</label>
+                            <div class="col-sm-9">
+                                <input type="text"  class="form-control" id="view-ID" disabled value="" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contato-nome" class="col-sm-3 control-label">Nome:</label>
+                            <div class="col-sm-9">
+                                <input id="contato-nome" type="text" class="form-control" value="" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contato-email" class="col-sm-3 control-label">E-mail:</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="contato-email" class="form-control" value="" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal col-sm-6">
+                        <div class="form-group">
+                            <label for="contato-telefone" class="col-sm-3 control-label">Telefone:</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="contato-telefone" class="form-control" value="" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contato-celular" class="col-sm-3 control-label">Celular:</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="contato-celular" class="form-control" value="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div id="msgErroContato" class="alert alert-danger hide text-center"><small><span></span></small></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger">Atualizar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

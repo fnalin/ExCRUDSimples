@@ -5,7 +5,7 @@
 }
 
 <div class="page-header">
-    <h2>Empresa <small>- Add</small></h2>
+    <h2>Empresa <small>- @(@Model.ID > 0 ? "Edit" : "Add")</small></h2>
 </div>
 @using (Html.BeginForm("AddEdit", "Cadastro", FormMethod.Post))
 {
@@ -52,12 +52,26 @@
             </div>
         </div>
     </div>
-    <br />
+    if (Model.ID > 0)
+    {
+        <hr />
+        <div class="row">
+            <div class="col-sm-6">
+                <h5>Contatos <span class="glyphicon glyphicon-chevron-up view-contatos"></span></h5>
+            </div>
+        </div>
+        <div class="row well" id="rel-contatos" data-flag="1">
+            @Html.Partial("_ContatosAddEdit", Model.Contatos)
+        </div>
+    }
+    <hr />
     <div class="row text-center">
         <input type="submit" value="Salvar Registro" class="btn btn-primary" />
         <a class="btn btn-danger" href="@Url.Action("Index","Cadastro")/#Empresa">Cancelar</a>
     </div>
 }
+@Html.Partial("_ContatoAddEditModal")
 @section scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/cadastro.js"></script>
 }

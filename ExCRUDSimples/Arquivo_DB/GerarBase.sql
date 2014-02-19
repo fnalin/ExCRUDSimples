@@ -2,6 +2,9 @@
 		******************************** ***************************************
 		Script criado por Fabiano Nalin em 6/11/13 às 0:00h
 
+
+		FabianoNalin.NET.br
+
 		Script para criar a Base de Dados
 
 */

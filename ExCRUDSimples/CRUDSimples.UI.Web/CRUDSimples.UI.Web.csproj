@@ -20,6 +20,10 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -129,6 +133,7 @@
     <Compile Include="Models\Empresa.cs" />
     <Compile Include="Models\Mapping\ContatoMap.cs" />
     <Compile Include="Models\Mapping\EmpresaMap.cs" />
+    <Compile Include="Models\ViewModel\ContatoVM.cs" />
     <Compile Include="Models\ViewModel\EmpresaVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -150,6 +155,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\cadastro.js" />
     <Content Include="Scripts\empresa.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -179,6 +185,8 @@
     <Content Include="Views\Cadastro\_Delete.cshtml" />
     <Content Include="Views\Cadastro\_Contato.cshtml" />
     <Content Include="Views\Cadastro\_DadosContatoView.cshtml" />
+    <Content Include="Views\Cadastro\_ContatosAddEdit.cshtml" />
+    <Content Include="Views\Cadastro\_ContatoAddEditModal.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
